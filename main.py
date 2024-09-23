@@ -26,6 +26,7 @@ def main():
         player.key_control()
         player.display()
         enemy_plane.display()
+        enemy_plane.auto_move()
 
         #显示窗口
         pygame.display.update()

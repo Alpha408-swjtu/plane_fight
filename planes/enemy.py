@@ -12,10 +12,21 @@ class EnemyPlane(object):
         self.speed = 10
         self.screen = screen
         self.bullets = []
-
+        self.direction = 'right'
 
     def display(self):
         self.screen.blit(self.player, (self.x, self.y))
         # for bullet in self.bullets:
         #     bullet.auto_move()
         #     bullet.display()
+
+    def auto_move(self):
+        if self.direction == 'right':
+            self.x += self.speed
+        elif self.direction == 'left':
+            self.x -= self.speed
+
+        if self.x > 480-51:
+            self.direction = 'left'
+        elif self.x < 0:
+            self.direction = 'right'

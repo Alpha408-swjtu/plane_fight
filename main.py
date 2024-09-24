@@ -3,9 +3,12 @@ from pygame import QUIT
 
 from planes.enemy import EnemyPlane
 from planes.player import HeroPlane
+from sound.music import GameSound
 
 
 def main():
+    sound = GameSound()
+    sound.PlayMusic()
     # 1.创建窗口
     screen = pygame.display.set_mode((480,852),0,32)
     # 创建背景图
@@ -27,6 +30,7 @@ def main():
         player.display()
         enemy_plane.display()
         enemy_plane.auto_move()
+        enemy_plane.auto_fire()
 
         #显示窗口
         pygame.display.update()

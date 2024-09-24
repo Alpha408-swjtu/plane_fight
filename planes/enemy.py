@@ -1,5 +1,9 @@
 #敌方飞机
+import random
+
 import pygame
+
+from bullets.enemy_bullets import EnemyBullet
 
 
 class EnemyPlane(object):
@@ -16,9 +20,9 @@ class EnemyPlane(object):
 
     def display(self):
         self.screen.blit(self.player, (self.x, self.y))
-        # for bullet in self.bullets:
-        #     bullet.auto_move()
-        #     bullet.display()
+        for bullet in self.bullets:
+            bullet.auto_move()
+            bullet.display()
 
     def auto_move(self):
         if self.direction == 'right':
@@ -30,3 +34,9 @@ class EnemyPlane(object):
             self.direction = 'left'
         elif self.x < 0:
             self.direction = 'right'
+
+    def auto_fire(self):
+        random_num = random.randint(1,10)
+        if random_num == 8:
+            bullet = EnemyBullet(self.screen,self.x,self.y)
+            self.bullets.append(bullet)
